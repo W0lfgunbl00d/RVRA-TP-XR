@@ -9,6 +9,7 @@ public class AppBootstrapper : MonoBehaviour
 
     TimeModel timeModel;
     PlanetSystemController controller;
+	TimeController timeController;
 
     void Start()
     {
@@ -34,5 +35,8 @@ public class AppBootstrapper : MonoBehaviour
         }
 
         timeModel.SetTime(DateTime.Now);
+
+		timeController = gameObject.AddComponent<TimeController>();
+		timeController.Init(timeModel);
     }
 }
