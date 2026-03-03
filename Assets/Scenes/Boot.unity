@@ -233,22 +233,6 @@ Transform:
   - {fileID: 1949876135}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &215411667 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5406623191476664919, guid: fa9f5ae53022e7b4cbd363d5aa039789, type: 3}
-  m_PrefabInstance: {fileID: 2044863148}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e81ec5b21d44836428d5484fe40b3bcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlanetView
---- !u!4 &215411671 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5614537579570840659, guid: fa9f5ae53022e7b4cbd363d5aa039789, type: 3}
-  m_PrefabInstance: {fileID: 2044863148}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &248664184
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -301,8 +285,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin (XR Rig)
       objectReference: {fileID: 0}
+    - target: {fileID: 9195941239639955255, guid: e6669457074c53b4cb420030e147cdce, type: 3}
+      propertyPath: m_UseManipulationInput
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9195941239639955255, guid: e6669457074c53b4cb420030e147cdce, type: 3}
+      propertyPath: m_UseDistanceBasedVelocityScaling
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3429577964109691842, guid: e6669457074c53b4cb420030e147cdce, type: 3}
+    - {fileID: 3654656083535788571, guid: e6669457074c53b4cb420030e147cdce, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6669457074c53b4cb420030e147cdce, type: 3}
@@ -1012,7 +1006,7 @@ MonoBehaviour:
   m_ParentInteractableObject: {fileID: 0}
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
+  m_UseDynamicAttach: 1
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
@@ -1065,7 +1059,7 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  targetParent: {fileID: 394987030}
+  targetParent: {fileID: 1238561601}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,14 +1140,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AppBootstrapper
   config: {fileID: 11400000, guid: da7f4baf7c21db140afa9740a9675ccb, type: 2}
   planets:
-  - {fileID: 215411667}
-  - {fileID: 3501571626181063014}
-  - {fileID: 5957261668800098399}
-  - {fileID: 888975087138900088}
-  - {fileID: 3475307423104749008}
-  - {fileID: 4759955484817659246}
-  - {fileID: 1485893701391218235}
-  - {fileID: 8336830123471562713}
+  - {fileID: 5406623192170682619}
+  - {fileID: 4730884294629763249}
+  - {fileID: 3305080466668329324}
+  - {fileID: 3771718511090431088}
+  - {fileID: 4119230935538149032}
+  - {fileID: 990505105602838247}
+  - {fileID: 4688226701391807009}
+  - {fileID: 696749895905616380}
+  solarSystemRoot: {fileID: 0}
   debugOverlay: {fileID: 0}
 --- !u!4 &1035613351
 Transform:
@@ -1199,15 +1194,15 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 198022042955250844}
-  - {fileID: 215411671}
-  - {fileID: 3501571626181063013}
-  - {fileID: 5957261668800098398}
-  - {fileID: 888975087138900087}
-  - {fileID: 3475307423104749007}
-  - {fileID: 4759955484817659245}
-  - {fileID: 1485893701391218234}
-  - {fileID: 8336830123471562712}
+  - {fileID: 8954132754740270024}
+  - {fileID: 5614537577576326911}
+  - {fileID: 729752635777366390}
+  - {fileID: 151149141311823157}
+  - {fileID: 400934957529094809}
+  - {fileID: 4307601096749746477}
+  - {fileID: 413498453491393007}
+  - {fileID: 1357137345959195068}
+  - {fileID: 9019991728621156208}
   m_Father: {fileID: 394987030}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1949876134
@@ -1395,6 +1390,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa9f5ae53022e7b4cbd363d5aa039789, type: 3}
+--- !u!4 &151149141311823157 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5815427754050350440, guid: f68a969dd9a10c44d92568048e7a3e73, type: 3}
+  m_PrefabInstance: {fileID: 5957261668800098397}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &198022042955250843
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1488,10 +1488,31 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2f03058da05e3b44bd7de215153c88d, type: 3}
---- !u!4 &198022042955250844 stripped
+--- !u!4 &400934957529094809 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 9150465289630035795, guid: f2f03058da05e3b44bd7de215153c88d, type: 3}
-  m_PrefabInstance: {fileID: 198022042955250843}
+  m_CorrespondingSourceObject: {fileID: 704301078830174959, guid: 54f50bff667b3964dbee1ae8ae362af0, type: 3}
+  m_PrefabInstance: {fileID: 888975087138900086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &413498453491393007 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5166694114950755459, guid: 3c2b1d3e3f7a27c4eb04a1aabde9e68e, type: 3}
+  m_PrefabInstance: {fileID: 4759955484817659244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &696749895905616380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8798068316673590827, guid: 7e0c3162f11d07f4591b360f1bae71d3, type: 3}
+  m_PrefabInstance: {fileID: 8336830123471562711}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81ec5b21d44836428d5484fe40b3bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetView
+--- !u!4 &729752635777366390 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4231289013026277394, guid: 8901eae2acf75334bb25bb8b905c2e06, type: 3}
+  m_PrefabInstance: {fileID: 3501571626181063012}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &888975087138900086
 PrefabInstance:
@@ -1566,15 +1587,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54f50bff667b3964dbee1ae8ae362af0, type: 3}
---- !u!4 &888975087138900087 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 704301078830174959, guid: 54f50bff667b3964dbee1ae8ae362af0, type: 3}
-  m_PrefabInstance: {fileID: 888975087138900086}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &888975087138900088 stripped
+--- !u!114 &990505105602838247 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4035665213135617030, guid: 54f50bff667b3964dbee1ae8ae362af0, type: 3}
-  m_PrefabInstance: {fileID: 888975087138900086}
+  m_CorrespondingSourceObject: {fileID: 5742152669717359499, guid: 3c2b1d3e3f7a27c4eb04a1aabde9e68e, type: 3}
+  m_PrefabInstance: {fileID: 4759955484817659244}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -1582,6 +1598,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81ec5b21d44836428d5484fe40b3bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetView
+--- !u!4 &1357137345959195068 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 453580755159320453, guid: 9c822680977a6854e9c17194a28a2261, type: 3}
+  m_PrefabInstance: {fileID: 1485893701391218233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1485893701391218233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1655,15 +1676,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c822680977a6854e9c17194a28a2261, type: 3}
---- !u!4 &1485893701391218234 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 453580755159320453, guid: 9c822680977a6854e9c17194a28a2261, type: 3}
-  m_PrefabInstance: {fileID: 1485893701391218233}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1485893701391218235 stripped
+--- !u!114 &3305080466668329324 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6165737035704054808, guid: 9c822680977a6854e9c17194a28a2261, type: 3}
-  m_PrefabInstance: {fileID: 1485893701391218233}
+  m_CorrespondingSourceObject: {fileID: 9183526562836277553, guid: f68a969dd9a10c44d92568048e7a3e73, type: 3}
+  m_PrefabInstance: {fileID: 5957261668800098397}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -1744,22 +1760,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ae4984a65296144f8285a1acc85ddd1, type: 3}
---- !u!4 &3475307423104749007 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 863963182009795811, guid: 8ae4984a65296144f8285a1acc85ddd1, type: 3}
-  m_PrefabInstance: {fileID: 3475307423104749006}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3475307423104749008 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 653223182968482662, guid: 8ae4984a65296144f8285a1acc85ddd1, type: 3}
-  m_PrefabInstance: {fileID: 3475307423104749006}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e81ec5b21d44836428d5484fe40b3bcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlanetView
 --- !u!1001 &3501571626181063012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1833,12 +1833,45 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8901eae2acf75334bb25bb8b905c2e06, type: 3}
---- !u!4 &3501571626181063013 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4231289013026277394, guid: 8901eae2acf75334bb25bb8b905c2e06, type: 3}
-  m_PrefabInstance: {fileID: 3501571626181063012}
+--- !u!114 &3771718511090431088 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4035665213135617030, guid: 54f50bff667b3964dbee1ae8ae362af0, type: 3}
+  m_PrefabInstance: {fileID: 888975087138900086}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3501571626181063014 stripped
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81ec5b21d44836428d5484fe40b3bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetView
+--- !u!114 &4119230935538149032 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 653223182968482662, guid: 8ae4984a65296144f8285a1acc85ddd1, type: 3}
+  m_PrefabInstance: {fileID: 3475307423104749006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81ec5b21d44836428d5484fe40b3bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetView
+--- !u!4 &4307601096749746477 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 863963182009795811, guid: 8ae4984a65296144f8285a1acc85ddd1, type: 3}
+  m_PrefabInstance: {fileID: 3475307423104749006}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4688226701391807009 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6165737035704054808, guid: 9c822680977a6854e9c17194a28a2261, type: 3}
+  m_PrefabInstance: {fileID: 1485893701391218233}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81ec5b21d44836428d5484fe40b3bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlanetView
+--- !u!114 &4730884294629763249 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8160362978990512597, guid: 8901eae2acf75334bb25bb8b905c2e06, type: 3}
   m_PrefabInstance: {fileID: 3501571626181063012}
@@ -1922,15 +1955,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c2b1d3e3f7a27c4eb04a1aabde9e68e, type: 3}
---- !u!4 &4759955484817659245 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5166694114950755459, guid: 3c2b1d3e3f7a27c4eb04a1aabde9e68e, type: 3}
-  m_PrefabInstance: {fileID: 4759955484817659244}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4759955484817659246 stripped
+--- !u!114 &5406623192170682619 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5742152669717359499, guid: 3c2b1d3e3f7a27c4eb04a1aabde9e68e, type: 3}
-  m_PrefabInstance: {fileID: 4759955484817659244}
+  m_CorrespondingSourceObject: {fileID: 5406623191476664919, guid: fa9f5ae53022e7b4cbd363d5aa039789, type: 3}
+  m_PrefabInstance: {fileID: 2044863148}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -1938,6 +1966,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81ec5b21d44836428d5484fe40b3bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlanetView
+--- !u!4 &5614537577576326911 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5614537579570840659, guid: fa9f5ae53022e7b4cbd363d5aa039789, type: 3}
+  m_PrefabInstance: {fileID: 2044863148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5957261668800098397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2011,22 +2044,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f68a969dd9a10c44d92568048e7a3e73, type: 3}
---- !u!4 &5957261668800098398 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5815427754050350440, guid: f68a969dd9a10c44d92568048e7a3e73, type: 3}
-  m_PrefabInstance: {fileID: 5957261668800098397}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5957261668800098399 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9183526562836277553, guid: f68a969dd9a10c44d92568048e7a3e73, type: 3}
-  m_PrefabInstance: {fileID: 5957261668800098397}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e81ec5b21d44836428d5484fe40b3bcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlanetView
 --- !u!1001 &8336830123471562711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2100,22 +2117,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e0c3162f11d07f4591b360f1bae71d3, type: 3}
---- !u!4 &8336830123471562712 stripped
+--- !u!4 &8954132754740270024 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9150465289630035795, guid: f2f03058da05e3b44bd7de215153c88d, type: 3}
+  m_PrefabInstance: {fileID: 198022042955250843}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &9019991728621156208 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1053609750041759911, guid: 7e0c3162f11d07f4591b360f1bae71d3, type: 3}
   m_PrefabInstance: {fileID: 8336830123471562711}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8336830123471562713 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8798068316673590827, guid: 7e0c3162f11d07f4591b360f1bae71d3, type: 3}
-  m_PrefabInstance: {fileID: 8336830123471562711}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e81ec5b21d44836428d5484fe40b3bcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlanetView
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
