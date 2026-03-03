@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class TimeModel
 {
@@ -19,15 +20,18 @@ public class TimeModel
     public void SetScale(float scale)
     {
         TimeScale = scale;
+        Debug.Log($"[TIME_MODEL] TimeScale changé : {scale}");
     }
 
     public void Play()
     {
         IsPlaying = true;
+        Debug.Log("[TIME_MODEL] Play");
     }
 
     public void Pause()
     {
         IsPlaying = false;
+        Debug.Log("[TIME_MODEL] Pause");
     }
 }

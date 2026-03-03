@@ -11,11 +11,7 @@ public class OrbitLineView : MonoBehaviour
         lineRenderer.useWorldSpace = true;
         lineRenderer.loop = true;
     }
-
-    /// <summary>
-    /// Set the orbit points on the LineRenderer.
-    /// Call this only when the orbit needs to be recalculated (not every frame).
-    /// </summary>
+    
     public void SetOrbitPoints(Vector3[] points)
     {
         lineRenderer.positionCount = points.Length;
@@ -25,6 +21,7 @@ public class OrbitLineView : MonoBehaviour
     public void SetVisible(bool visible)
     {
         lineRenderer.enabled = visible;
+        Debug.Log($"[ORBIT] {gameObject.name} visible={visible}");
     }
 }
 

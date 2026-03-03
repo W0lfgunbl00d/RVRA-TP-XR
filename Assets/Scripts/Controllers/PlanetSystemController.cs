@@ -3,12 +3,10 @@ using UnityEngine;
 
 public class PlanetSystemController
 {
-    TimeModel timeModel;
-    IPlanetEphemerisService ephemeris;
+    readonly TimeModel timeModel;
+    readonly IPlanetEphemerisService ephemeris;
+    readonly PlanetView[] planets;
 
-    PlanetView[] planets;
-
-    // Number of sample points per orbit
     const int orbitSamples = 360;
 
     // Approximate orbital periods in days for each planet
@@ -34,6 +32,8 @@ public class PlanetSystemController
         this.planets = planets;
 
         timeModel.OnTimeChanged += UpdatePlanets;
+
+        Debug.Log("[PLANET_CTRL] Abonné à OnTimeChanged");
     }
 
     void UpdatePlanets(DateTime time)
