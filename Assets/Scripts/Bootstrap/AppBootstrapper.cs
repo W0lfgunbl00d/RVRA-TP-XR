@@ -9,12 +9,17 @@ public class AppBootstrapper : MonoBehaviour
     [Header("Views (assignées via l'inspecteur)")]
     [SerializeField] PlanetView[] planets;
 
+    [Header("Solar System (assigné via l'inspecteur)")]
+    [Tooltip("Le transform racine du système solaire (pour le scale)")]
+    [SerializeField] Transform solarSystemRoot;
+
     [Header("Debug (assigné via l'inspecteur)")]
     [Tooltip("Panneau de debug visible dans le casque")]
     [SerializeField] DebugOverlay debugOverlay;
 
     TimeModel timeModel;
     PlanetSystemController controller;
+    ScaleController scaleController;
     TimeController timeController;
 
     void Start()
@@ -60,6 +65,26 @@ public class AppBootstrapper : MonoBehaviour
             }
         }
         Debug.Log($"[BOOT] Orbites configurées : {orbitCount}/{planets.Length} (visible={config.showOrbits})");
+
+        // --- Scale ---
+        if (solarSystemRoot != null)
+        {
+            scaleController = new ScaleController(
+                solarSystemRoot,
+                config.initialScale,
+                config.minScale,
+                config.maxScale
+            );
+
+            // ScaleInteraction utilise Update() pour lire le thumbstick (justifié)
+            var scaleInteraction = gameObject.AddComponent<ScaleInteraction>();
+            scaleInteraction.Init(scaleController);
+            Debug.Log("[BOOT] ScaleController + ScaleInteraction créés");
+        }
+        else
+        {
+            Debug.LogWarning("[BOOT] SolarSystemRoot non assigné — contrôle d'échelle désactivé");
+        }
 
         // --- Debug Overlay ---
         if (debugOverlay != null)
