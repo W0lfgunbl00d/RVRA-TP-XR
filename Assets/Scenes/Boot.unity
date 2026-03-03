@@ -1148,7 +1148,7 @@ MonoBehaviour:
   - {fileID: 990505105602838247}
   - {fileID: 4688226701391807009}
   - {fileID: 696749895905616380}
-  solarSystemRoot: {fileID: 0}
+  solarSystemRoot: {fileID: 394987030}
   debugOverlay: {fileID: 0}
 --- !u!4 &1035613351
 Transform:
