@@ -15,8 +15,8 @@ public class ScaleInteraction : MonoBehaviour
 
     ScaleController scaleController;
 
-    InputAction zoomInAction;   // B = zoom in
-    InputAction zoomOutAction;  // A = zoom out
+    InputAction zoomInAction;   // zoom in
+    InputAction zoomOutAction;  // zoom out
 
     public void Init(ScaleController controller)
     {
@@ -24,17 +24,17 @@ public class ScaleInteraction : MonoBehaviour
 
         // Bouton B (primaryButton sur le contrôleur droit) → zoom in
         zoomInAction = new InputAction("ZoomIn", InputActionType.Button);
-        zoomInAction.AddBinding("<XRController>{RightHand}/primaryButton");
+        zoomInAction.AddBinding("<XRController>{LeftHand}/primaryButton");
         zoomInAction.AddBinding("<Keyboard>/pageUp");
         zoomInAction.Enable();
 
         // Bouton A (secondaryButton sur le contrôleur droit) → zoom out
         zoomOutAction = new InputAction("ZoomOut", InputActionType.Button);
-        zoomOutAction.AddBinding("<XRController>{RightHand}/secondaryButton");
+        zoomOutAction.AddBinding("<XRController>{LeftHand}/secondaryButton");
         zoomOutAction.AddBinding("<Keyboard>/pageDown");
         zoomOutAction.Enable();
 
-        Debug.Log("[SCALE_INPUT] Initialisé (B=zoom in, A=zoom out / PageUp-PageDown)");
+        Debug.Log("[SCALE_INPUT] Initialisé (Y=zoom in, X=zoom out / PageUp-PageDown)");
     }
 
     void OnDestroy()
