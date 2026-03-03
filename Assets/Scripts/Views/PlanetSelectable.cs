@@ -8,6 +8,14 @@ public class PlanetSelectable : XRSimpleInteractable
     PlanetView planetView;
     PlanetSelectionModel selectionModel;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        // Désactiver toute sélection — hover uniquement
+        // Empêche le NearFarInteractor de "grab" la planète
+        selectMode = InteractableSelectMode.None;
+    }
+
     public void Init(PlanetView view, PlanetSelectionModel model)
     {
         planetView = view;

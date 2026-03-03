@@ -91,19 +91,27 @@ public class AppBootstrapper : MonoBehaviour
         selectionModel = new PlanetSelectionModel();
         foreach (var planet in planets)
         {
+            // Retirer tout Rigidbody qui pourrait interférer avec le mouvement
+            var rb = planet.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                DestroyImmediate(rb);
+                Debug.LogWarning($"[BOOT] Rigidbody retiré de {planet.planet} — interfère avec SetPosition");
+            }
+
+            // S'assurer qu'il y a un Collider pour la détection par le rayon
+            if (planet.GetComponent<Collider>() == null)
+            {
+                planet.gameObject.AddComponent<SphereCollider>();
+                Debug.LogWarning($"[BOOT] SphereCollider ajouté automatiquement sur {planet.planet}");
+            }
+
             // Ajouter un PlanetSelectable s'il n'existe pas déjà
             var selectable = planet.GetComponent<PlanetSelectable>();
             if (selectable == null)
                 selectable = planet.gameObject.AddComponent<PlanetSelectable>();
 
             selectable.Init(planet, selectionModel);
-
-            // S'assurer qu'il y a un Collider pour la détection par le rayon
-            if (planet.GetComponent<Collider>() == null)
-            {
-                var col = planet.gameObject.AddComponent<SphereCollider>();
-                Debug.LogWarning($"[BOOT] SphereCollider ajouté automatiquement sur {planet.planet} — ajustez sa taille dans l'inspecteur");
-            }
         }
         Debug.Log($"[BOOT] PlanetSelectionModel créé — {planets.Length} planètes sélectionnables");
 
