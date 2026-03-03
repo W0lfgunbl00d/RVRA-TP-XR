@@ -15,6 +15,7 @@ public class GrabSystemHandle : XRGrabInteractable
     protected override void Awake()
     {
         base.Awake();
+
         movementType = MovementType.Instantaneous;
     }
 
@@ -24,11 +25,12 @@ public class GrabSystemHandle : XRGrabInteractable
 
         if (targetParent == null) return;
 
-        // Cast to IXRInteractor (XRI 3.x)
+        // Cast to IXRSelectInteractor (XRI 3.x)
         IXRSelectInteractor interactor = args.interactorObject;
         Transform interactorTransform = interactor.GetAttachTransform(this);
 
-        localPositionOffset = targetParent.InverseTransformPoint(interactorTransform.position);
+        // CORRECT MATH: Get the parent's position/rotation in the INTERACTOR'S local space
+        localPositionOffset = interactorTransform.InverseTransformPoint(targetParent.position);
         localRotationOffset = Quaternion.Inverse(interactorTransform.rotation) * targetParent.rotation;
     }
 
@@ -43,7 +45,8 @@ public class GrabSystemHandle : XRGrabInteractable
             IXRSelectInteractor interactor = firstInteractorSelecting;
             Transform interactorTransform = interactor.GetAttachTransform(this);
 
-            targetParent.position = interactorTransform.TransformPoint(-localPositionOffset);
+            // CORRECT MATH: Apply the local offsets relative to the interactor's current transform
+            targetParent.position = interactorTransform.TransformPoint(localPositionOffset);
             targetParent.rotation = interactorTransform.rotation * localRotationOffset;
         }
     }

@@ -1059,7 +1059,7 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
-  targetParent: {fileID: 1238561601}
+  targetParent: {fileID: 394987030}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
