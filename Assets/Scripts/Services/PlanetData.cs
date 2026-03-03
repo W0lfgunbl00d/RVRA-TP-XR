@@ -29,7 +29,7 @@ public static class PlanetData
             - longPeri
             + (GetKeplerParameter(p, KeplerParameter.b)[0] * T * T)
             + GetKeplerParameter(p, KeplerParameter.c)[0] * Mathf.Cos(Mathf.Deg2Rad * GetKeplerParameter(p, KeplerParameter.f)[0] * T)
-            + GetKeplerParameter(p, KeplerParameter.s)[0] * Mathf.Cos(Mathf.Deg2Rad * GetKeplerParameter(p, KeplerParameter.f)[0] * T);
+            + GetKeplerParameter(p, KeplerParameter.s)[0] * Mathf.Sin(Mathf.Deg2Rad * GetKeplerParameter(p, KeplerParameter.f)[0] * T);
 
         M = M % 360 - 180;
 

@@ -24,6 +24,15 @@ public class AppBootstrapper : MonoBehaviour
             planets
         );
 
+        // Configure orbit visibility from config
+        foreach (var planet in planets)
+        {
+            if (planet.orbitLine != null)
+            {
+                planet.orbitLine.SetVisible(config.showOrbits);
+            }
+        }
+
         timeModel.SetTime(DateTime.Now);
     }
 }
