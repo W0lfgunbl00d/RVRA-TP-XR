@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 public class AppBootstrapper : MonoBehaviour
 {
@@ -10,6 +10,7 @@ public class AppBootstrapper : MonoBehaviour
     TimeModel timeModel;
     PlanetSystemController controller;
 	TimeController timeController;
+
 
     void Start()
     {
@@ -38,5 +39,6 @@ public class AppBootstrapper : MonoBehaviour
 
 		timeController = gameObject.AddComponent<TimeController>();
 		timeController.Init(timeModel);
+
     }
 }
