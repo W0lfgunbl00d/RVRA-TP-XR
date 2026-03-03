@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 
 [RequireComponent(typeof(Collider))]
 public class PlanetSelectable : XRSimpleInteractable
@@ -11,9 +12,11 @@ public class PlanetSelectable : XRSimpleInteractable
     protected override void Awake()
     {
         base.Awake();
-        // Désactiver toute sélection — hover uniquement
-        // Empêche le NearFarInteractor de "grab" la planète
-        selectMode = InteractableSelectMode.None;
+    }
+    
+    public override bool IsSelectableBy(IXRSelectInteractor interactor)
+    {
+        return false;
     }
 
     public void Init(PlanetView view, PlanetSelectionModel model)
