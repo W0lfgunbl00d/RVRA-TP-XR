@@ -2,9 +2,9 @@
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// Lit le thumbstick droit (Y axis) du contrôleur VR pour zoomer/dézoomer.
+/// Lit les boutons B (zoom) et A (dézoom) du contrôleur droit pour changer l'échelle.
 /// Ne manipule JAMAIS le transform directement — appelle ScaleController.
-/// Update() justifié : lecture continue d'un axe analogique.
+/// Update() justifié : lecture continue des boutons maintenus.
 /// Initialisé par AppBootstrapper via Init().
 /// </summary>
 public class ScaleInteraction : MonoBehaviour
@@ -15,41 +15,50 @@ public class ScaleInteraction : MonoBehaviour
 
     ScaleController scaleController;
 
-    InputAction thumbstickAction;
+    InputAction zoomInAction;   // B = zoom in
+    InputAction zoomOutAction;  // A = zoom out
 
     public void Init(ScaleController controller)
     {
         scaleController = controller;
 
-        // Crée une action qui lit le thumbstick droit (axe Y) sur le contrôleur VR
-        thumbstickAction = new InputAction("ScaleThumbstick", InputActionType.Value);
-        thumbstickAction.AddBinding("<XRController>{RightHand}/thumbstick/y");
-        // Fallback clavier pour les tests sans casque
-        thumbstickAction.AddCompositeBinding("1DAxis")
-            .With("Positive", "<Keyboard>/pageUp")
-            .With("Negative", "<Keyboard>/pageDown");
-        thumbstickAction.Enable();
+        // Bouton B (primaryButton sur le contrôleur droit) → zoom in
+        zoomInAction = new InputAction("ZoomIn", InputActionType.Button);
+        zoomInAction.AddBinding("<XRController>{RightHand}/primaryButton");
+        zoomInAction.AddBinding("<Keyboard>/pageUp");
+        zoomInAction.Enable();
 
-        Debug.Log("[SCALE_INPUT] Initialisé (thumbstick droit Y / PageUp-PageDown)");
+        // Bouton A (secondaryButton sur le contrôleur droit) → zoom out
+        zoomOutAction = new InputAction("ZoomOut", InputActionType.Button);
+        zoomOutAction.AddBinding("<XRController>{RightHand}/secondaryButton");
+        zoomOutAction.AddBinding("<Keyboard>/pageDown");
+        zoomOutAction.Enable();
+
+        Debug.Log("[SCALE_INPUT] Initialisé (B=zoom in, A=zoom out / PageUp-PageDown)");
     }
 
     void OnDestroy()
     {
-        thumbstickAction?.Disable();
-        thumbstickAction?.Dispose();
+        zoomInAction?.Disable();
+        zoomInAction?.Dispose();
+        zoomOutAction?.Disable();
+        zoomOutAction?.Dispose();
     }
 
-    // Update() justifié : lecture continue d'un axe analogique (thumbstick)
+    // Update() justifié : lecture continue des boutons maintenus
     void Update()
     {
-        if (scaleController == null || thumbstickAction == null) return;
+        if (scaleController == null) return;
 
-        float input = thumbstickAction.ReadValue<float>();
+        float delta = 0f;
 
-        // Dead zone pour éviter les micro-mouvements
-        if (Mathf.Abs(input) < 0.15f) return;
+        if (zoomInAction.IsPressed())
+            delta += scaleSpeed * Time.deltaTime;
 
-        scaleController.AdjustScale(input * scaleSpeed * Time.deltaTime);
+        if (zoomOutAction.IsPressed())
+            delta -= scaleSpeed * Time.deltaTime;
+
+        if (!Mathf.Approximately(delta, 0f))
+            scaleController.AdjustScale(delta);
     }
 }
-
