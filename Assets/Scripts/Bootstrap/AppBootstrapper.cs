@@ -20,6 +20,7 @@ public class AppBootstrapper : MonoBehaviour
     TimeModel timeModel;
     PlanetSystemController controller;
     ScaleController scaleController;
+    PlanetSelectionModel selectionModel;
     TimeController timeController;
 
     void Start()
@@ -85,6 +86,35 @@ public class AppBootstrapper : MonoBehaviour
         {
             Debug.LogWarning("[BOOT] SolarSystemRoot non assigné — contrôle d'échelle désactivé");
         }
+
+        // --- Sélection planètes ---
+        selectionModel = new PlanetSelectionModel();
+        foreach (var planet in planets)
+        {
+            // Ajouter un PlanetSelectable s'il n'existe pas déjà
+            var selectable = planet.GetComponent<PlanetSelectable>();
+            if (selectable == null)
+                selectable = planet.gameObject.AddComponent<PlanetSelectable>();
+
+            selectable.Init(planet, selectionModel);
+
+            // S'assurer qu'il y a un Collider pour la détection par le rayon
+            if (planet.GetComponent<Collider>() == null)
+            {
+                var col = planet.gameObject.AddComponent<SphereCollider>();
+                Debug.LogWarning($"[BOOT] SphereCollider ajouté automatiquement sur {planet.planet} — ajustez sa taille dans l'inspecteur");
+            }
+
+            // Rigidbody kinematic requis par XRI
+            var rb = planet.GetComponent<Rigidbody>();
+            if (rb == null)
+            {
+                rb = planet.gameObject.AddComponent<Rigidbody>();
+                rb.isKinematic = true;
+                rb.useGravity = false;
+            }
+        }
+        Debug.Log($"[BOOT] PlanetSelectionModel créé — {planets.Length} planètes sélectionnables");
 
         // --- Debug Overlay ---
         if (debugOverlay != null)
