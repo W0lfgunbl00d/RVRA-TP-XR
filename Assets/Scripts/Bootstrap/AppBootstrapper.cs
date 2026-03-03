@@ -104,15 +104,6 @@ public class AppBootstrapper : MonoBehaviour
                 var col = planet.gameObject.AddComponent<SphereCollider>();
                 Debug.LogWarning($"[BOOT] SphereCollider ajouté automatiquement sur {planet.planet} — ajustez sa taille dans l'inspecteur");
             }
-
-            // Rigidbody kinematic requis par XRI
-            var rb = planet.GetComponent<Rigidbody>();
-            if (rb == null)
-            {
-                rb = planet.gameObject.AddComponent<Rigidbody>();
-                rb.isKinematic = true;
-                rb.useGravity = false;
-            }
         }
         Debug.Log($"[BOOT] PlanetSelectionModel créé — {planets.Length} planètes sélectionnables");
 

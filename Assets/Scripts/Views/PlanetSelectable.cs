@@ -7,7 +7,7 @@ public class PlanetSelectable : XRSimpleInteractable
 {
     PlanetView planetView;
     PlanetSelectionModel selectionModel;
-    
+
     public void Init(PlanetView view, PlanetSelectionModel model)
     {
         planetView = view;
@@ -15,9 +15,9 @@ public class PlanetSelectable : XRSimpleInteractable
         Debug.Log($"[SELECTABLE] {view.planet} prêt à être sélectionné");
     }
 
-    protected override void OnSelectEntered(SelectEnterEventArgs args)
+    protected override void OnHoverEntered(HoverEnterEventArgs args)
     {
-        base.OnSelectEntered(args);
+        base.OnHoverEntered(args);
 
         if (selectionModel == null || planetView == null) return;
 
@@ -25,9 +25,9 @@ public class PlanetSelectable : XRSimpleInteractable
         Debug.Log($"[XR] Planète pointée : {planetView.planet}");
     }
 
-    protected override void OnSelectExited(SelectExitEventArgs args)
+    protected override void OnHoverExited(HoverExitEventArgs args)
     {
-        base.OnSelectExited(args);
+        base.OnHoverExited(args);
 
         if (selectionModel == null) return;
 
